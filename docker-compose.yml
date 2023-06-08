@@ -1,0 +1,17 @@
+# vim docker-compose.yml
+version: '3.0'  # version 정의
+services:  # service 아래단에 정의
+  chatgpt:  # flask01에 관련
+    build:
+      context: .
+      dockerfile: ./dockerfile  # build 시킬 dockerfile
+    image: flask01:0.0  # 사용자 지정 image 이름
+    ports:
+     - "8501:8501"  # open port 설정
+    networks:
+     - openai  # network 설정
+
+# volumes:  # volume 정의
+networks:
+  openai:
+    # external: true  # 기존의 네트워크를 사용하도록 설정
